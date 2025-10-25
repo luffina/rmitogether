@@ -1,13 +1,854 @@
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #111827;
+  color: white;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.app {
+  background-color: #111827;
+  color: white;
+  min-height: 100vh;
+}
+
+.navbar {
+  background: linear-gradient(to right, #9333ea, #ec4899);
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.navbar-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-title {
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.navbar-buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.nav-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-btn.active {
+  background-color: white;
+  color: black;
+}
+
+.nav-btn:hover:not(.active) {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.nav-btn.logout {
+  background-color: #dc2626;
+  color: white;
+}
+
+.nav-btn.logout:hover {
+  background-color: #b91c1c;
+}
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+/* Auth Page */
+.auth-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #111827 0%, #2d1b69 50%, #111827 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.auth-card {
+  background-color: #1f2937;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 28rem;
+}
+
+.auth-title {
+  font-size: 2.25rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, #a78bfa, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.auth-subtitle {
+  text-align: center;
+  color: #9ca3af;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  background-color: #374151;
+  color: white;
+  border: 1px solid #4b5563;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #ec4899;
+}
+
+.form-input::placeholder {
+  color: #9ca3af;
+}
+
+.error-message {
+  background-color: rgba(220, 38, 38, 0.2);
+  border: 1px solid #dc2626;
+  color: #fca5a5;
+  padding: 1rem;
+  border-radius: 0.375rem;
+  margin-bottom: 1rem;
+}
+
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(to right, #9333ea, #ec4899);
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.submit-btn:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  transform: scale(1.02);
+}
+
+.auth-toggle {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #9ca3af;
+}
+
+.auth-toggle button {
+  background: none;
+  border: none;
+  color: #f472b6;
+  font-weight: bold;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.auth-toggle button:hover {
+  color: #ec4899;
+}
+
+.demo-credentials {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: rgba(107, 114, 128, 0.3);
+  border-radius: 0.375rem;
+  border: 1px solid #4b5563;
+}
+
+.demo-credentials-title {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.demo-credentials-text {
+  font-size: 0.75rem;
+  color: #d1d5db;
+}
+
+/* Feed Page */
+.feed-title {
+  font-size: 2.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.feed-subtitle {
+  color: #9ca3af;
+  margin-bottom: 2rem;
+}
+
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.event-card {
+  background-color: #1f2937;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border: 1px solid #374151;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.event-card:hover {
+  background-color: rgba(55, 65, 81, 0.5);
+}
+
+.event-content {
+  flex: 1;
+}
+
+.event-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.event-emoji {
+  font-size: 1.875rem;
+}
+
+.event-title {
+  font-size: 1.375rem;
+  font-weight: bold;
+}
+
+.event-date {
+  color: #9ca3af;
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.event-description {
+  color: #d1d5db;
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.event-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.event-tag {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+}
+
+.event-tag.type {
+  background-color: #1e40af;
+  color: white;
+}
+
+.event-tag.points {
+  background-color: #16a34a;
+  color: white;
+}
+
+.event-sidebar {
+  text-align: right;
+  margin-left: 1.5rem;
+}
+
+.event-attendees {
+  font-size: 1.875rem;
+  font-weight: bold;
+  color: #ec4899;
+}
+
+.event-attendees-label {
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+.rsvp-btn {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.rsvp-btn:hover {
+  transform: scale(1.05);
+}
+
+.rsvp-btn.active {
+  background-color: #4b5563;
+  color: #d1d5db;
+}
+
+.rsvp-btn.inactive {
+  background-color: #ec4899;
+  color: white;
+}
+
+.rsvp-btn.inactive:hover {
+  background-color: #be185d;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 50;
+}
+
+.modal-content {
+  background-color: #1f2937;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  max-width: 42rem;
+  width: 100%;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.modal-emoji {
+  font-size: 3.75rem;
+}
+
+.modal-title {
+  font-size: 1.875rem;
+  font-weight: bold;
+}
+
+.modal-date {
+  color: #9ca3af;
+}
+
+.modal-description {
+  color: #d1d5db;
+  margin-bottom: 1.5rem;
+}
+
+.modal-tags {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-tag {
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  color: white;
+}
+
+.modal-tag.type {
+  background-color: #1e40af;
+}
+
+.modal-tag.points {
+  background-color: #16a34a;
+}
+
+.modal-tag.attendees {
+  background-color: #9333ea;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.modal-btn {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-btn.confirm {
+  background-color: #ec4899;
+  color: white;
+}
+
+.modal-btn.confirm:hover {
+  background-color: #be185d;
+}
+
+.modal-btn.cancel {
+  background-color: #374151;
+  color: white;
+}
+
+.modal-btn.cancel:hover {
+  background-color: #4b5563;
+}
+
+/* Leaderboard */
+.leaderboard-title {
+  font-size: 2.25rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.leaderboard-table {
+  background-color: #1f2937;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 1px solid #374151;
+}
+
+.leaderboard-header {
+  background: linear-gradient(to right, #9333ea, #ec4899);
+  padding: 1rem;
+  display: flex;
+  gap: 2rem;
+  font-weight: bold;
+  font-size: 1.125rem;
+}
+
+.leaderboard-header-item {
+  flex: 0 0 auto;
+}
+
+.leaderboard-header-name {
+  flex: 1;
+}
+
+.leaderboard-row {
+  padding: 1rem;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  border-bottom: 1px solid #374151;
+  transition: background-color 0.3s ease;
+}
+
+.leaderboard-row:hover {
+  background-color: rgba(55, 65, 81, 0.5);
+}
+
+.leaderboard-rank {
+  font-size: 1.375rem;
+  font-weight: bold;
+  flex: 0 0 auto;
+  width: 4rem;
+}
+
+.leaderboard-name {
+  flex: 1;
+}
+
+.leaderboard-user-name {
+  font-weight: bold;
+}
+
+.leaderboard-user-email {
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+.leaderboard-points {
+  flex: 0 0 8rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #ec4899;
+}
+
+.leaderboard-badge {
+  flex: 0 0 8rem;
+}
+
+.empty-message {
+  background-color: #1f2937;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+  color: #9ca3af;
+  border: 1px solid #374151;
+}
+
+/* Profile */
+.profile-card {
+  background-color: #1f2937;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  border: 1px solid #374151;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.profile-avatar {
+  font-size: 4.5rem;
+}
+
+.profile-info h2 {
+  font-size: 1.875rem;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.profile-email {
+  color: #9ca3af;
+}
+
+.profile-status {
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-box {
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.stat-box.purple {
+  background: linear-gradient(135deg, #9333ea, #6d28d9);
+}
+
+.stat-box.pink {
+  background: linear-gradient(135deg, #ec4899, #be185d);
+}
+
+.stat-box.blue {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+}
+
+.stat-number {
+  font-size: 2.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  color: #e5e7eb;
+  font-size: 0.875rem;
+}
+
+.badges-title {
+  font-size: 1.375rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.badge-box {
+  background-color: #374151;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.badge-box:hover {
+  background-color: #4b5563;
+}
+
+.badge-emoji {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.badge-name {
+  font-weight: bold;
+  font-size: 0.875rem;
+}
+
+.badge-description {
+  color: #9ca3af;
+  font-size: 0.75rem;
+}
+
+.rewards-title {
+  font-size: 1.375rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.rewards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.reward-item {
+  background-color: #374151;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.reward-item:hover {
+  background-color: #4b5563;
+}
+
+.reward-name {
+  font-weight: bold;
+}
+
+.reward-points {
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+.redeem-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.redeem-btn.enabled {
+  background-color: #ec4899;
+  color: white;
+}
+
+.redeem-btn.enabled:hover {
+  background-color: #be185d;
+}
+
+.redeem-btn.disabled {
+  background-color: #4b5563;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+/* Create Event Button */
+.create-event-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: linear-gradient(to right, #9333ea, #ec4899);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  z-index: 40;
+}
+
+.create-event-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 35px -5px rgba(236, 72, 153, 0.5);
+}
+
+/* Create Event Modal */
+.create-event-modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 50;
+}
+
+.create-event-content {
+  background-color: #1f2937;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  max-width: 42rem;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.create-event-header {
+  font-size: 1.875rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.form-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-section.full {
+  grid-template-columns: 1fr;
+}
+
+.create-event-footer {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.create-event-footer button {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.create-event-footer button.create {
+  background: linear-gradient(to right, #9333ea, #ec4899);
+  color: white;
+}
+
+.create-event-footer button.create:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+.create-event-footer button.cancel {
+  background-color: #374151;
+  color: white;
+}
+
+.create-event-footer button.cancel:hover {
+  background-color: #4b5563;
+}
+
+/* User Events Section */
+.my-events-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #374151;
+}
+
+.my-events-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.user-event-card {
+  background-color: #1f2937;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border-left: 4px solid #ec4899;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-event-info h4 {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.user-event-info p {
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+.delete-event-btn {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.delete-event-btn:hover {
+  background-color: #b91c1c;
 }
