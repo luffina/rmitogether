@@ -1,70 +1,163 @@
-# Getting Started with Create React App
+A social event discovery platform for RMIT students to discover campus events, study groups, and community activities all in one place.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🌟 Features
 
-## Available Scripts
+- **Event Feed**: Real-time feed of events, study groups, free food alerts, and clubs
+- **RSVP & Check-in**: Students can RSVP and check-in to events
+- **Gamification**: Earn points, badges, and compete on leaderboards
+- **Rewards System**: Redeem points for cafe vouchers, merch, and discounts
+- **Create Events**: Students can create and manage their own events
+- **Community Building**: Connect with other students with shared interests
 
-In the project directory, you can run:
+## 🛠️ Tech Stack
 
-### `npm start`
+- **Frontend**: React.js
+- **Styling**: Custom CSS (No Tailwind)
+- **Storage**: Browser LocalStorage
+- **State Management**: React Hooks
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 📋 Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Clone the repository:
+```bash
+git clone https://github.com/luffina/rmitogether.git
+cd rmitogether
+```
 
-### `npm test`
+2. Install dependencies:
+```bash
+npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Start the development server:
+```bash
+npm start
+```
 
-### `npm run build`
+The app will open at `http://localhost:3000`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🎮 How to Use
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Sign Up / Sign In
+- Create an account or sign in with demo credentials:
+  - Email: `demo@rmit.edu.au`
+  - Password: `demo123`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Browse Events
+- View all upcoming events in the Feed
+- Click on any event to see details
+- RSVP to events to earn points
 
-### `npm run eject`
+### Create Events
+- Click the **+** button (bottom right) to create a new event
+- Fill in event details (title, date, time, description)
+- Earn 50 bonus points when you create an event!
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Earn Points & Badges
+- Attend events to earn points
+- Accumulate points to unlock badges
+- Redeem points for rewards
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Leaderboard
+- See top community members
+- Compete with other students
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Profile
+- Track your points and events attended
+- View your badges
+- Redeem rewards
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📊 Gamification System
 
-## Learn More
+- **Points**: 
+  - +10 pts per event attendance
+  - +25 pts for free food events
+  - +50 pts for creating an event
+  
+- **Badges**:
+  - 🦋 Social Butterfly (5+ events)
+  - 📚 Study Legend (3+ study groups)
+  - ⭐ Rising Star (350+ points)
+  - 👑 Event Creator (Create events)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Rewards**:
+  - ☕ Cafe Voucher ($5) - 100 points
+  - 🎽 RMITogether Merch - 250 points
+  - 🍔 Lunch Discount (20%) - 150 points
+  - 🎮 Gaming Pass (1 month) - 200 points
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 💾 Data Storage
 
-### Code Splitting
+All data is stored in browser LocalStorage:
+- User accounts
+- Event data
+- Points and badges
+- RSVP history
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**Note**: Data persists only in the same browser. Clearing cache will reset data.
 
-### Analyzing the Bundle Size
+## 🚀 Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Deploy to Vercel (Recommended)
 
-### Making a Progressive Web App
+1. Push code to GitHub:
+```bash
+git add .
+git commit -m "Deploy RMITogether"
+git push -u origin main
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+2. Go to https://vercel.com
+3. Click "Import Project"
+4. Select your `rmitogether` repository
+5. Click "Deploy"
 
-### Advanced Configuration
+Your app will be live at `rmitogether.vercel.app`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Deploy to Netlify
 
-### Deployment
+1. Build the app:
+```bash
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+2. Go to https://netlify.com
+3. Drag and drop the `build` folder
+4. Done!
 
-### `npm run build` fails to minify
+## 📁 Project Structure
+```
+rmitogether/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── Auth.jsx
+│   │   ├── Feed.jsx
+│   │   ├── Leaderboard.jsx
+│   │   └── Profile.jsx
+│   ├── App.jsx
+│   ├── index.css
+│   └── index.js
+├── package.json
+└── README.md
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🎯 Problem Solved
+
+RMITogether solves the problem of scattered event information across multiple platforms (Discord, Facebook, emails, bulletin boards). Now students have ONE place to discover everything happening at RMIT!
+
+## 👥 Team
+
+Created for RMIT students by RMIT students.
+
+## 📝 License
+
+Open source - free to use and modify.
+
+## 🤝 Contributing
+
+Found a bug or want to add a feature? Feel free to contribute!
+
+---
+
+**Made with ❤️ for RMIT Students**

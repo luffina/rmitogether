@@ -121,11 +121,11 @@ export function Auth({ onLoginSuccess }) {
           </button>
         </div>
 
-        <div className="demo-credentials">
+        {/* <div className="demo-credentials">
           <p className="demo-credentials-title">Demo Credentials:</p>
           <p className="demo-credentials-text">Email: demo@rmit.edu.au</p>
           <p className="demo-credentials-text">Password: demo123</p>
-        </div>
+        </div> */}
       </div>
     </div>
   );
